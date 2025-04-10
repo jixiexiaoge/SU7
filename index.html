@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小米SU7车机助手</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .btn-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .btn {
+            display: block;
+            padding: 12px 20px;
+            background: #1890ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #40a9ff;
+            transform: translateY(-2px);
+        }
+        .btn.warning {
+            background: #ff4d4f;
+        }
+        .btn.warning:hover {
+            background: #ff7875;
+        }
+        .notice {
+            background: #fffbe6;
+            border: 1px solid #ffe58f;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>小米SU7车机助手</h1>
+            <p>扩展车机浏览器功能，实现更多系统交互</p>
+        </div>
+
+        <div class="section">
+            <h2>🌐 基础功能</h2>
+            <div class="btn-group">
+                <a href="https://space.bilibili.com/40097653" class="btn">打开B站空间</a>
+                <a href="https://wx.zsxq.com/group/15522844582412" class="btn">打开知识星球</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📂 文件管理</h2>
+            <div class="btn-group">
+                <a href="content://com.android.externalstorage.documents/root/" class="btn">打开文件管理器</a>
+                <a href="content://com.android.externalstorage.documents/document/primary:Download" class="btn">访问下载目录</a>
+                <a href="content://com.android.externalstorage.documents/document/primary:Pictures" class="btn">访问图片目录</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📱 系统功能</h2>
+            <div class="btn-group">
+                <a href="intent://camera#Intent;scheme=android-app;end" class="btn">打开相机</a>
+                <a href="intent://settings#Intent;scheme=android-app;end" class="btn">打开设置</a>
+                <a href="intent://bluetooth#Intent;scheme=android-app;end" class="btn">蓝牙设置</a>
+                <a href="intent://wifi#Intent;scheme=android-app;end" class="btn">WiFi设置</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📲 应用管理</h2>
+            <div class="btn-group">
+                <a href="intent://install-package#Intent;scheme=package;end" class="btn">安装APK</a>
+                <a href="intent://uninstall-package#Intent;scheme=package;end" class="btn warning">卸载应用</a>
+                <a href="intent://list#Intent;scheme=android-app;end" class="btn">应用列表</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚠️ 注意事项</h2>
+            <div class="notice">
+                <p>1. 使用这些功能可能会影响车机系统的稳定性</p>
+                <p>2. 某些功能可能需要root权限</p>
+                <p>3. 请在安全环境下使用这些功能</p>
+                <p>4. 建议在车辆停止状态下操作</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 添加点击事件处理
+        document.addEventListener('DOMContentLoaded', function() {
+            // 处理所有按钮点击
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    // 如果是系统功能，添加确认提示
+                    if (this.href.includes('intent://')) {
+                        if (!confirm('确定要执行此操作吗？')) {
+                            e.preventDefault();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
